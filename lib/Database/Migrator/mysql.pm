@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Database::Migrator::Types qw( Str );
+use File::Slurp qw( read_file );
 use IPC::Run3 qw( run3 );
 
 use Moose;
@@ -56,9 +57,18 @@ sub _create_database {
 
     my $schema_ddl = read_file( $self->schema_file()->stringify() );
 
+    $self->_run_ddl($schema_ddl);
+
+    return;
+}
+
+sub _run_ddl {
+    my $self = shift;
+    my $ddl  = shift;
+
     $self->_run_command(
-        [ $self->_cli_args(), '--database', $database, '--batch' ],
-        $schema_ddl,
+        [ $self->_cli_args(), '--database', $self->database(), '--batch' ],
+        $ddl,
     );
 }
 
