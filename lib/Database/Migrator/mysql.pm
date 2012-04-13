@@ -44,7 +44,7 @@ sub _create_database {
 
     my $database = $self->database();
 
-    $self->_logger()->info("Creating the $database database");
+    $self->logger()->info("Creating the $database database");
 
     my $create_ddl = "CREATE DATABASE $database";
     $create_ddl .= ' CHARACTER SET = ' . $self->character_set()
@@ -54,10 +54,6 @@ sub _create_database {
 
     $self->_run_command(
         [ $self->_cli_args(), qw(  --batch -e ), $create_ddl ] );
-
-    my $schema_ddl = read_file( $self->schema_file()->stringify() );
-
-    $self->_run_ddl($schema_ddl);
 
     return;
 }
