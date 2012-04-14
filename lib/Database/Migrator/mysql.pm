@@ -4,6 +4,8 @@ use strict;
 use warnings;
 
 use Database::Migrator::Types qw( Str );
+use DBD::mysql;
+use DBI;
 use File::Slurp qw( read_file );
 use IPC::Run3 qw( run3 );
 
