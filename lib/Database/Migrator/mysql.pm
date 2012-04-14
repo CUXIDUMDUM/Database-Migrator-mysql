@@ -99,3 +99,21 @@ sub _build_dbh {
 __PACKAGE__->meta()->make_immutable();
 
 1;
+
+#ABSTRACT: Database::Migrator implementation for MySQL
+
+=head1 SYNOPSIS
+
+  package MyApp::Migrator;
+
+  use parent 'Database::Migrator::mysql';
+
+  has '+database' => (
+      required => 0,
+      default  => 'MyApp',
+  );
+
+=head1 DESCRIPTION
+
+This module provides a L<Database::Migrator> implementation for MySQL. See
+L<Database::Migrator> and L<Database::Migrator::Core> for more documentation.
