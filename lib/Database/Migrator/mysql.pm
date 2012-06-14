@@ -108,7 +108,9 @@ __PACKAGE__->meta()->make_immutable();
 
   package MyApp::Migrator;
 
-  use parent 'Database::Migrator::mysql';
+  use Moose;
+
+  extends 'Database::Migrator::mysql';
 
   has '+database' => (
       required => 0,
