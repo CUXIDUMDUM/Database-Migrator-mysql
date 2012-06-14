@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+- Made the SYNOPSIS use Moose (derr).
+
+
 0.01     2012-04-13
 
 - First release upon an unsuspecting world.
