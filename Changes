@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.02     2012-06-14
+
 - Made the SYNOPSIS use Moose (derr).
 
 
