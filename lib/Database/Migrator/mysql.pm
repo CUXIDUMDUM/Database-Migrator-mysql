@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use namespace::autoclean;
 
+use Database::Migrator 0.05;
 use Database::Migrator::Types qw( Str );
 use DBD::mysql;
 use DBI;
