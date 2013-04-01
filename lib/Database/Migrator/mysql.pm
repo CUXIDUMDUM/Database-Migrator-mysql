@@ -61,6 +61,19 @@ sub _create_database {
     return;
 }
 
+sub _drop_database {
+    my $self = shift;
+
+    my $database = $self->database();
+
+    $self->logger()->info("Dropping the $database database");
+
+    my $drop_ddl = "DROP DATABASE IF EXISTS $database";
+
+    $self->_run_command(
+        [ $self->_cli_args(), qw(  --batch -e ), $drop_ddl ] );
+}
+
 sub _run_ddl {
     my $self = shift;
     my $file = shift;
