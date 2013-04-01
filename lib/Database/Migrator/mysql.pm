@@ -85,14 +85,43 @@ sub _cli_args {
     return @cli;
 }
 
-sub _build_dbh {
-    my $self = shift;
+sub _run_command {
+    my $self    = shift;
+    my $command = shift;
+    my $input   = shift;
 
-    return DBI->connect(
-        'dbi:mysql:' . $self->database(),
-        $self->username(),
-        $self->password(),
-    );
+    my $stdout = q{};
+    my $stderr = q{};
+
+    my $handle_stdout = sub {
+        $self->logger()->debug(@_);
+
+        $stdout .= $_ for @_;
+    };
+
+    my $handle_stderr = sub {
+        $self->logger()->debug(@_);
+
+        $stderr .= $_ for @_;
+    };
+
+    $self->logger()->debug("Running command: [@{$command}]");
+
+    return if $self->dry_run();
+
+    run3( $command, \$input, $handle_stdout, $handle_stderr );
+
+    if ($?) {
+        my $exit = $? >> 8;
+
+        my $msg = "@{$command} returned an exit code of $exit\n";
+        $msg .= "\nSTDOUT:\n$stdout\n\n" if length $stdout;
+        $msg .= "\nSTDERR:\n$stderr\n\n" if length $stderr;
+
+        die $msg;
+    }
+
+    return $stdout;
 }
 
 __PACKAGE__->meta()->make_immutable();
