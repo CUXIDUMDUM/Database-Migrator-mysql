@@ -63,7 +63,9 @@ sub _create_database {
 
 sub _run_ddl {
     my $self = shift;
-    my $ddl  = shift;
+    my $file = shift;
+
+    my $ddl = read_file( $file->stringify() );
 
     $self->_run_command(
         [ $self->_cli_args(), '--database', $self->database(), '--batch' ],
