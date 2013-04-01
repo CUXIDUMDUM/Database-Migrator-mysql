@@ -2,6 +2,7 @@ package Database::Migrator::mysql;
 
 use strict;
 use warnings;
+use namespace::autoclean;
 
 use Database::Migrator::Types qw( Str );
 use DBD::mysql;
