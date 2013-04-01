@@ -26,22 +26,6 @@ has collation => (
     predicate => '_has_collation',
 );
 
-sub _build_database_exists {
-    my $self = shift;
-
-    my $databases;
-    run3(
-        [ $self->_cli_args(), '-e', 'SHOW DATABASES' ],
-        \undef,
-        \$databases,
-        \undef,
-    );
-
-    my $database = $self->database();
-
-    return $databases =~ /\Q$database\E/;
-}
-
 sub _create_database {
     my $self = shift;
 
