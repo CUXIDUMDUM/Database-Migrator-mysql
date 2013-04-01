@@ -90,12 +90,6 @@ sub _build_dbh {
         'dbi:mysql:' . $self->database(),
         $self->user(),
         $self->password(),
-        {
-            RaiseError         => 1,
-            PrintError         => 0,
-            PrintWarn          => 1,
-            ShowErrorStatement => 1,
-        },
     );
 }
 
