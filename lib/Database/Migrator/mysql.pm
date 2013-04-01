@@ -75,7 +75,7 @@ sub _cli_args {
     my $self = shift;
 
     my @cli = 'mysql';
-    push @cli, '-u' . $self->user()     if defined $self->user();
+    push @cli, '-u' . $self->username() if defined $self->username();
     push @cli, '-p' . $self->password() if defined $self->password();
     push @cli, '-h' . $self->host()     if defined $self->host();
     push @cli, '-P' . $self->port()     if defined $self->port();
@@ -88,7 +88,7 @@ sub _build_dbh {
 
     return DBI->connect(
         'dbi:mysql:' . $self->database(),
-        $self->user(),
+        $self->username(),
         $self->password(),
     );
 }
