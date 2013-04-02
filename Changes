@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+- Updates to work with the latest Database::Migrator.
+
+
 0.02     2012-06-14
 
 - Made the SYNOPSIS use Moose (derr).
