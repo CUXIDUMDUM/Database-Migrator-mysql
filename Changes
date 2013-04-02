@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+- Improved documentation.
+
+
 0.03     2013-04-01
 
 - Updates to work with the latest Database::Migrator.
