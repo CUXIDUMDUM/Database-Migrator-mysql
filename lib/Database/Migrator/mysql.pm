@@ -122,6 +122,8 @@ sub _run_command {
     return $stdout;
 }
 
+sub _driver_name { 'mysql' }
+
 __PACKAGE__->meta()->make_immutable();
 
 1;
