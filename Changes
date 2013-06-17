@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.05     2013-06-16
+
 - Provide the _driver_name sub needed by the latest Database::Migrator::Core.
 
 
