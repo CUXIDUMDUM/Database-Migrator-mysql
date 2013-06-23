@@ -166,3 +166,9 @@ The collation of the database. This is only used when creating a new
 database. This is optional.
 
 =back
+
+=head1 SUPPORT
+
+Please submit bugs to the CPAN RT system at
+http://rt.cpan.org/NoAuth/Bugs.html?Dist=Database-Migrator-mysql or via email
+at bug-database-migrator-mysql@rt.cpan.org.
